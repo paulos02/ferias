@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contador para as Férias</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+  body {
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    color: #2c3e50;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  #contador {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #27ae60;
+    animation: pulse 2s infinite;
+    margin: 20px 0;
+  }
+  #frase {
+    font-size: 1.5rem;
+    max-width: 600px;
+    color: #34495e;
+    font-style: italic;
+    line-height: 1.4;
+    min-height: 60px;
+    transition: opacity 0.5s ease;
+  }
+  @keyframes pulse {
+    0%, 100% {
+      text-shadow: 0 0 8px #27ae60, 0 0 20px #2ecc71;
+      transform: scale(1);
+    }
+    50% {
+      text-shadow: 0 0 20px #27ae60, 0 0 40px #2ecc71;
+      transform: scale(1.1);
+    }
+  }
+  footer {
+    position: fixed;
+    bottom: 15px;
+    font-size: 0.9rem;
+    color: #2c3e50cc;
+  }
+</style>
+</head>
+<body>
+
+<h1>Faltam...</h1>
+<div id="contador">...</div>
+<div id="frase"></div>
+
+<footer>Modo Zen-Férias v2.0 &mdash; Sistema Automático de Descanso</footer>
+
+<script>
+  const dataFerias = new Date(2025, 7, 14); // 25 Agosto 2025
+
+const frases = [
+  "O descanso chama, e eu atendo desligado.",
+  "A minha resposta está em modo hibernação profunda.",
+  "O servidor do descanso está a processar pedidos de relaxamento.",
+  "Em modo ausência: a minha produtividade está em modo avião.",
+  "Não respondo porque o botão “desligar” está premido.",
+  "Processando paz interior, aguarde tranquilamente.",
+  "O meu modo “não me chateies” está ativado permanentemente.",
+  "A minha caixa de entrada está a recuperar do choque.",
+  "A minha mente está a reiniciar em modo férias.",
+  "A resposta automática está em modo zen, tente mais tarde.",
+  "Estou a fazer um backup do meu sossego.",
+  "O sistema interno está em manutenção para descanso.",
+  "Não perturbar: meditação em curso.",
+  "Não respondo, a minha bateria emocional está a carregar.",
+  "Em modo descanso: mensagens serão ignoradas com carinho.",
+  "A minha produtividade está em férias prolongadas.",
+  "O meu antivírus está a eliminar o stress.",
+  "O meu estado: “fora do escritório”, mas com estilo.",
+  "O meu servidor interno está offline para descanso.",
+  "Estou numa reunião com a minha tranquilidade.",
+  "Estou em pausa para recarregar o espírito.",
+  "Ausência ativada: tempo para me perder em pensamentos.",
+  "Estou a sincronizar com a paz interior, não respondo.",
+  "O meu estado atual é “fora da rede”.",
+  "O modo férias está a bloquear todas as notificações.",
+  "Estou em modo avião, mas para o trabalho.",
+  "A minha mente está em modo economia de energia.",
+  "Em modo silêncio, porque a calma é prioridade.",
+  "Não perturbar: estou a praticar a arte do descanso.",
+  "O descanso é o meu novo projeto prioritário.",
+  "O meu email está a recolher poeira virtual.",
+  "O sistema de resposta está em modo “não me apresses”.",
+  "Estou a desligar para ligar melhor depois.",
+  "Modo férias: ativado, respostas: desativadas.",
+  "O meu espírito está em modo “não agitar, descanso dentro”.",
+  "Estou em modo “férias eternas” (até nova ordem).",
+  "A minha caixa de mensagens está a fazer detox.",
+  "Em modo ausência, a ouvir o silêncio digital.",
+  "Estou a trabalhar no meu projeto “desligar mais”.",
+  "A minha produtividade está a fazer yoga.",
+  "A minha mente está em modo “vadiar produtivamente”.",
+  "A minha prioridade atual: ignorar emails com arte.",
+  "O meu estado de espírito é “fora do escritório, dentro de mim”.",
+  "O meu sistema interno está a restaurar o equilíbrio.",
+  "Em modo descanso: respostas programadas para ignorar.",
+  "Estou a recarregar as baterias do bom humor.",
+  "O meu modo “não me ligues” está permanente.",
+  "Estou a praticar a filosofia do “não respondo”.",
+  "O meu foco está no nada, por isso não respondo.",
+  "A minha mente está offline, a descansar.",
+  "Em modo férias, o stress está desligado.",
+  "Estou a aplicar o patch do descanso mental.",
+  "O meu sistema está em modo “não acordar cedo”.",
+  "A minha caixa de entrada está em modo férias.",
+  "Estou em processo de desconexão gradual.",
+  "Em modo “não responder” para salvar a sanidade.",
+  "Estou a ativar o modo “desligar para recarregar”.",
+  "O descanso é a minha prioridade absoluta.",
+  "Estou a evitar bugs de trabalho com descanso.",
+  "O meu sistema está a atualizar para “mais férias”.",
+  "Em modo férias: mensagens serão ignoradas com sorriso.",
+  "Estou a recarregar o software interno de felicidade.",
+  "A minha mente está em modo “não disponível”.",
+  "Estou a praticar o unplugging emocional.",
+  "O meu estado: “não responder” com classe.",
+  "Estou a desligar as notificações da vida profissional.",
+  "A minha atenção está em modo descanso profundo.",
+  "Estou a instalar o plugin da paz interior.",
+  "A minha caixa de entrada está em hibernação.",
+  "Estou a testar o modo “não me chateies” em produção.",
+  "O descanso é a minha nova tarefa principal.",
+  "Em modo ausência, mensagens são objetos inócuos.",
+  "Estou a navegar no oceano do relaxamento.",
+  "A minha resposta está em espera infinita.",
+  "Estou a processar a ausência com prioridade máxima.",
+  "O meu modo férias bloqueia toda a produtividade.",
+  "Estou a calibrar o meu nível de serenidade.",
+  "O meu estado interno é “não perturbar”.",
+  "Estou a recarregar a bateria da paciência.",
+  "O modo férias é o meu novo sistema operativo.",
+  "Estou a trabalhar no upgrade do descanso.",
+  "A minha mente está em modo “soneca eterna”.",
+  "Estou a executar a tarefa “não responder”.",
+  "Em modo ausência, o tempo é um aliado.",
+  "Estou a desligar para melhor voltar.",
+  "O meu servidor interno está em modo férias.",
+  "Estou em modo “relaxar primeiro, responder depois”.",
+  "A minha mente está em modo “slow motion”.",
+  "Estou a aplicar a política do “não responder”.",
+  "O descanso é o meu estado natural.",
+  "Estou a ativar o modo férias com eficácia máxima.",
+  "Em modo ausência, as respostas são dispensáveis.",
+  "Estou a praticar a arte da pausa estratégica.",
+  "O meu estado é “não responder”, mas com boa disposição.",
+  "Estou a desligar para ouvir a minha paz interior.",
+  "Em modo férias, o trabalho é um mito.",
+  "Estou a cultivar o jardim da serenidade.",
+  "O descanso é o meu novo KPI.",
+  "Estou a reiniciar o sistema da tranquilidade.",
+  "Estou em modo férias com privilégio de não responder.",
+  "A minha resposta está em modo “pilha descarregada”.",
+  "Estou a navegar no modo “não perturbar” absoluto.",
+  "O meu sistema está a processar o “não responder”.",
+  "Estou a instalar o firewall da ausência.",
+  "Em modo descanso, o trabalho fica em standby.",
+  "Estou a fazer uma pausa longa, muito longa.",
+  "A minha mente está em modo férias infinito.",
+  "Estou em modo ausência, desligado e feliz.",
+  "O descanso é a minha prioridade inabalável.",
+  "Estou a aplicar a atualização “não responder 2.0”.",
+  "Em modo férias, as notificações são ecos distantes.",
+  "Estou a descansar para melhor ignorar.",
+  "O meu servidor mental está a carregar paz.",
+  "Estou em modo ausência com status “não disponível”.",
+  "O descanso é o meu firewall contra o stress.",
+  "Estou a recarregar a bateria do sossego.",
+  "Em modo “não responder”, a calma é absoluta.",
+  "Estou a desligar para conectar comigo mesmo.",
+  "O meu estado é férias permanentes na mente.",
+  "Estou a executar o comando “desligar e relaxar”.",
+  "Em modo ausência, o tempo é só meu.",
+  "Estou a praticar o unplugging total.",
+  "O descanso está a correr em background.",
+  "Estou em modo “não perturbar”, agradeço a compreensão.",
+  "A minha mente está em pausa para felicidade.",
+  "Estou a meditar sobre o significado do descanso.",
+  "Em modo férias, as mensagens não me alcançam.",
+  "Estou a recarregar o sistema emocional.",
+  "O descanso é o meu modo de operação.",
+  "Estou a cultivar a arte de não responder.",
+  "Em modo ausência, a serenidade impera.",
+  "Estou a desligar para encontrar paz.",
+  "O meu servidor interno está offline para descanso.",
+  "Estou a descansar para voltar a brilhar.",
+  "Em modo férias, a produtividade é opcional.",
+  "Estou a ativar o modo “não responder” com estilo.",
+  "O descanso é o meu estado preferido.",
+  "Estou a atualizar o software do sossego.",
+  "Em modo ausência, o stress fica para trás.",
+  "Estou a desligar para melhorar a performance mental.",
+  "O meu sistema está a executar a pausa definitiva.",
+  "Estou em modo férias, não incomodar, não responder.",
+  "O descanso está a ser processado com máxima prioridade.",
+  "Estou a viver o sonho do “não responder”.",
+  "Em modo ausência, tudo flui sem pressa.",
+  "Estou a recarregar a bateria da tranquilidade.",
+  "O meu estado é “não disponível”, mas feliz.",
+  "Estou a desligar para conectar com o essencial.",
+  "Em modo férias, as preocupações são suspensas.",
+  "Estou a praticar a arte do descanso absoluto."
+];
+
+
+  let fraseIndex = 0;
+
+  function atualizarContador() {
+    const agora = new Date();
+    const diffTime = dataFerias - agora;
+    const diffSeconds = Math.floor(diffTime / 1000);
+
+    const contadorEl = document.getElementById('contador');
+    const fraseEl = document.getElementById('frase');
+
+    if (diffSeconds > 0) {
+      const dias = Math.floor(diffSeconds / (3600 * 24));
+      const horas = Math.floor((diffSeconds % (3600 * 24)) / 3600);
+      const minutos = Math.floor((diffSeconds % 3600) / 60);
+      const segundos = diffSeconds % 60;
+
+      contadorEl.textContent = 
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+    } else if (diffSeconds >= -86400) { // até 1 dia depois
+      contadorEl.textContent = 'HOJE!';
+    } else {
+      contadorEl.textContent = 'FÉRIAS';
+    }
+  }
+
+  function mudarFrase() {
+    const fraseEl = document.getElementById('frase');
+    fraseEl.style.opacity = 0;
+    setTimeout(() => {
+      fraseEl.textContent = frases[fraseIndex];
+      fraseEl.style.opacity = 1;
+      fraseIndex = (fraseIndex + 1) % frases.length;
+    }, 500);
+  }
+
+  atualizarContador();
+  mudarFrase();
+
+  setInterval(atualizarContador, 1000);
+  setInterval(mudarFrase, 10000);
+</script>
+
+</body>
+</html>
