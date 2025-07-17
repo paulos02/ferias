@@ -54,37 +54,39 @@
     
     <div class="mb-4">
       <h2>Passos</h2>
-      <ol class="list-group list-group-numbered">
-        <li class="list-group-item bg-dark text-light border-secondary mb-2">
-          <span class="step-number">1</span>
-          <strong>Identifica o número da folha protegida:</strong><br />
-          Abre o Excel, clica com o botão direito na folha desejada e escolhe <code>Ver Código</code>.<br />
-          No editor VBA, vê a lista das folhas e anota o número da folha (ex: <em>Folha4</em>).
-        </li>
-        <li class="list-group-item bg-dark text-light border-secondary mb-2">
-          <span class="step-number">2</span>
-          <strong>Prepara o ficheiro:</strong><br />
-          Fecha o Excel e faz uma cópia do ficheiro (para não perder dados).<br />
-          Renomeia a cópia para <code>.zip</code> (ex: <em>Cópia - Ficheiro.zip</em>).<br />
-          Para isso, no Explorador de Ficheiros ativa as <strong>Extensões de ficheiros</strong> na aba <strong>Vista</strong>.
-        </li>
-        <li class="list-group-item bg-dark text-light border-secondary mb-2">
-          <span class="step-number">3</span>
-          <strong>Edita o ficheiro XML da folha:</strong><br />
-          Abre o ficheiro <code>.zip</code> e vai a <code>xl/worksheets/</code>.<br />
-          Copia o ficheiro da folha (ex: <code>sheet4.xml</code>) para fora do <code>.zip</code>.<br />
-          Abre esse ficheiro num editor de texto.<br />
-          Procura por <code>sheetProtection</code> e apaga essa linha toda (ex: <code>&lt;sheetProtection ... /&gt;</code>).<br />
-          Guarda o ficheiro.
-        </li>
-        <li class="list-group-item bg-dark text-light border-secondary mb-2">
-          <span class="step-number">4</span>
-          <strong>Substitui e finaliza:</strong><br />
-          Volta ao ficheiro <code>.zip</code>, substitui o ficheiro <code>sheet4.xml</code> pela versão editada.<br />
-          Fecha o <code>.zip</code> e renomeia-o para <code>.xlsx</code>.<br />
-          Abre o Excel — a folha estará desbloqueada.
-        </li>
-      </ol>
+
+<ul class="list-unstyled">
+  <li class="bg-dark text-light border-secondary mb-3 p-3 rounded">
+    <span class="step-number">1</span>
+    <strong>Identifica o número da folha protegida:</strong><br />
+    Abre o Excel, clica com o botão direito na folha desejada e escolhe <code>Ver Código</code>.<br />
+    No editor VBA, vê a lista das folhas e anota o número da folha (ex: <em>Folha4</em>).
+  </li>
+  <li class="bg-dark text-light border-secondary mb-3 p-3 rounded">
+    <span class="step-number">2</span>
+    <strong>Prepara o ficheiro:</strong><br />
+    Fecha o Excel e faz uma cópia do ficheiro (para não perder dados).<br />
+    Renomeia a cópia para <code>.zip</code> (ex: <em>Cópia - Ficheiro.zip</em>).<br />
+    Para isso, no Explorador de Ficheiros ativa as <strong>Extensões de ficheiros</strong> na aba <strong>Vista</strong>.
+  </li>
+  <li class="bg-dark text-light border-secondary mb-3 p-3 rounded">
+    <span class="step-number">3</span>
+    <strong>Edita o ficheiro XML da folha:</strong><br />
+    Abre o ficheiro <code>.zip</code> e vai a <code>xl/worksheets/</code>.<br />
+    Copia o ficheiro da folha (ex: <code>sheet4.xml</code>) para fora do <code>.zip</code>.<br />
+    Abre esse ficheiro num editor de texto.<br />
+    Procura por <code>sheetProtection</code> e apaga essa linha toda (ex: <code>&lt;sheetProtection ... /&gt;</code>).<br />
+    Guarda o ficheiro.
+  </li>
+  <li class="bg-dark text-light border-secondary mb-3 p-3 rounded">
+    <span class="step-number">4</span>
+    <strong>Substitui e finaliza:</strong><br />
+    Volta ao ficheiro <code>.zip</code>, substitui o ficheiro <code>sheet4.xml</code> pela versão editada.<br />
+    Fecha o <code>.zip</code> e renomeia-o para <code>.xlsx</code>.<br />
+    Abre o Excel — a folha estará desbloqueada.
+  </li>
+</ul>
+      
     </div>
 
     <div class="alert alert-info" role="alert">
