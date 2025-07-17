@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contador para as Férias</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+  body {
+    background: linear-gradient(135deg, #f9c5d1 0%, #f6a5c0 100%);
+    color: #6a2c4c;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(106, 44, 76, 0.3);
+  }
+  #contador {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #d44a7f;
+    animation: pulse 2s infinite;
+    margin: 20px 0;
+  }
+  #frase {
+    font-size: 1.5rem;
+    max-width: 600px;
+    color: #7a3850;
+    font-style: italic;
+    line-height: 1.4;
+    min-height: 60px;
+    transition: opacity 0.5s ease;
+  }
+  @keyframes pulse {
+    0%, 100% {
+      text-shadow: 0 0 8px #d44a7f, 0 0 20px #f06292;
+      transform: scale(1);
+    }
+    50% {
+      text-shadow: 0 0 20px #d44a7f, 0 0 40px #f06292;
+      transform: scale(1.1);
+    }
+  }
+  footer {
+    position: fixed;
+    bottom: 15px;
+    font-size: 0.9rem;
+    color: #6a2c4ccc;
+  }
+</style>
+</head>
+<body>
+
+<h1>Faltam...</h1>
+<div id="contador">...</div>
+<div id="frase"></div>
+
+<footer>Modo Zen-Férias v2.0 &mdash; Sistema Automático de Descanso</footer>
+
+<script>
+  const dataFerias = new Date(2025, 7, 4); // 4 Agosto 2025
+
+  const frases = [
+    "Fui às compras, a lista foi só desculpa para o passeio.",
+    "Estou no cabeleireiro, mudando o look para as férias.",
+    "Hoje é dia de mim: máscara facial e batom rosa!",
+    "A carteira está mais leve, mas a alma mais feliz.",
+    "Desliguei o telemóvel, só atendo na piscina.",
+    "Serei encontrada no sofá, com uma chávena de chá e novela.",
+    "A minha prioridade? Encontrar o bronze perfeito.",
+    "Fui comprar uns sapatos, e não, não foram só uns.",
+    "A minha mala já tem mais glitter que roupa.",
+    "Hoje o meu programa é maratonar séries e relaxar.",
+    "No spa, a única preocupação é escolher o aroma do óleo.",
+    "A manicure está feita, agora só falta o bronze.",
+    "Vou demorar... entre selfies e provar roupa nova.",
+    "Cabelo lavado, penteado e pronto para a praia.",
+    "O meu estado: pés na areia, coração leve.",
+    "Vou ali ao café, mas já volto com um gelado.",
+    "Fui ao shopping, agora estou oficialmente em modo férias.",
+    "Hoje o mantra é: menos stress, mais batom.",
+    "Hora do chá e do descanso, com música a tocar.",
+    "A agenda de hoje: relaxar, sonhar e repetir.",
+    "Sem pressas, com muita preguiça chique.",
+    "Estou numa missão de encontrar o melhor gelado da cidade.",
+    "O meu lema: menos emails, mais passeios.",
+    "Rosa é a cor do descanso, e do meu estado de espírito.",
+    "Hoje só respondo a mensagens que tragam boas notícias.",
+    "A minha playlist é só hits de verão e batidas suaves.",
+    "Sem relógio, só o sol a marcar o tempo.",
+    "Fui dar um passeio e perdi-me a sorrir.",
+    "O meu batom é o acessório oficial das férias.",
+    "Hoje o meu relógio marca ‘hora de relaxar’.",
+    "Cabelo ao vento e sorriso no rosto.",
+    "Estou a treinar a arte de não fazer nada.",
+    "Fui ao mercado e voltei com flores para a casa.",
+    "A minha rotina inclui muitos abraços e café gelado.",
+    "Relaxar é o meu novo desporto favorito.",
+    "Sorrir é o meu exercício matinal.",
+    "Hoje, tudo o que quero é descanso com glamour.",
+    "Fui ao cabeleireiro e saí pronta para arrasar.",
+    "O meu estado de espírito? Um blush constante.",
+    "Apenas passear e deixar o tempo passar.",
+    "Estou a contar os dias... para não contar mais nada.",
+    "Os meus dias agora têm cheiro a maresia e batom.",
+    "Hoje, o meu único compromisso é comigo mesma.",
+    "A minha prioridade: um bronze sem pressas.",
+    "Fui ao mercado, mas trouxe só coisas boas.",
+    "Sinto-me de férias mesmo antes delas começarem.",
+    "Hoje o plano é: pijama o dia todo e muita preguiça.",
+    "A minha bebida favorita? Qualquer uma com guarda-chuva.",
+    "Fui ao cabeleireiro, porque mereço este mimo.",
+    "Entre um passeio e outro, um gelado é sempre bem-vindo.",
+    "O descanso tem a cor do meu batom preferido.",
+    "Hoje estou em modo ‘não perturbar’, com estilo.",
+    "Fui às compras e trouxe um sorriso de presente.",
+    "A minha rotina é agora feita de pequenas felicidades.",
+    "O meu espírito está em modo férias, sem preocupações.",
+    "Estou a aproveitar cada segundo do descanso merecido.",
+    "Hoje o meu sorriso é a melhor maquilhagem.",
+    "Fui ao cabeleireiro e saí a sentir-me uma estrela.",
+    "Estou a viver o sonho do descanso com glamour.",
+    "A minha playlist hoje é só risos e conversas boas.",
+    "Nada me apressa, o meu ritmo é de férias.",
+    "Fui às compras, mas o melhor foi o gelado no fim.",
+    "A minha mente está a relaxar, e o corpo a agradecer.",
+    "Hoje o meu melhor acessório é o bom humor.",
+    "Estou a dar prioridade ao meu bem-estar.",
+    "Fui ao cabeleireiro, porque descanso também é cuidar de mim.",
+    "Hoje só respondo ao sol e à brisa fresca.",
+    "Fui passear e trouxe um bocadinho de felicidade no olhar.",
+    "O descanso tem sabor a gelado e batom cor-de-rosa."
+  ];
+
+  let fraseIndex = 0;
+
+  function atualizarContador() {
+    const agora = new Date();
+    const diffTime = dataFerias - agora;
+    const diffSeconds = Math.floor(diffTime / 1000);
+
+    const contadorEl = document.getElementById('contador');
+    const fraseEl = document.getElementById('frase');
+
+    if (diffSeconds > 0) {
+      const dias = Math.floor(diffSeconds / (3600 * 24));
+      const horas = Math.floor((diffSeconds % (3600 * 24)) / 3600);
+      const minutos = Math.floor((diffSeconds % 3600) / 60);
+      const segundos = diffSeconds % 60;
+
+      contadorEl.textContent = 
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+    } else if (diffSeconds >= -86400) { // até 1 dia depois
+      contadorEl.textContent = 'HOJE!';
+    } else {
+      contadorEl.textContent = 'FÉRIAS';
+    }
+  }
+
+  function mudarFrase() {
+    const fraseEl = document.getElementById('frase');
+    fraseEl.style.opacity = 0;
+    setTimeout(() => {
+      fraseEl.textContent = frases[fraseIndex];
+      fraseEl.style.opacity = 1;
+      fraseIndex = (fraseIndex + 1) % frases.length;
+    }, 500);
+  }
+
+  atualizarContador();
+  mudarFrase();
+
+  setInterval(atualizarContador, 1000);
+  setInterval(mudarFrase, 10000);
+</script>
+
+</body>
+</html>
