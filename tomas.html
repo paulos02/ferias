@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contador para o nascimento do Tomás</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #a2c9f2 0%, #6ba4e7 100%);
+      color: #003366;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0, 51, 102, 0.3);
+    }
+
+    #contador {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #004080;
+      animation: pulse 2s infinite;
+      margin: 20px 0;
+    }
+
+    #frase {
+      font-size: 1.5rem;
+      max-width: 600px;
+      color: #003366;
+      font-style: italic;
+      line-height: 1.4;
+      min-height: 60px;
+      transition: opacity 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 8px #004080, 0 0 20px #89c4f4;
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 0 0 20px #004080, 0 0 40px #89c4f4;
+        transform: scale(1.05);
+      }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 15px;
+      font-size: 0.9rem;
+      color: #003366cc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contagem para o nascimento do Tomás</h1>
+  <div id="contador">...</div>
+  <div id="frase"></div>
+
+  <footer>Em contagem decrescente para o primeiro abraço ❤️</footer>
+
+  <script>
+    // Data de nascimento: 121 dias a partir de agora
+    const agora = new Date();
+    const nascimentoTomas = new Date(agora.getTime() + 121 * 24 * 60 * 60 * 1000);
+
+    const frases = [
+      "Cada segundo aproxima-nos do primeiro sorriso do Tomás.",
+      "Mal podemos esperar para te conhecer, pequeno Tomás.",
+      "Já sonhamos contigo todas as noites.",
+      "A tua chegada vai transformar o nosso mundo.",
+      "O teu quartinho está a ganhar alma com amor.",
+      "Tomás, o teu nome já enche esta casa de esperança.",
+      "És pequenino, mas já és tudo para nós.",
+      "Serás sempre o nosso maior presente.",
+      "A contagem é decrescente, mas o amor só cresce.",
+      "Estamos à tua espera com o coração aberto.",
+      "Faltam só 121 dias para te termos nos braços.",
+      "És o nosso sonho a tornar-se realidade.",
+      "O teu primeiro suspiro será o nosso novo mundo.",
+      "Tomás, a tua luz já brilha cá dentro.",
+      "O amor por ti já ocupa todo o nosso peito.",
+      "O teu coração bate em harmonia com o nosso.",
+      "Mal podemos esperar para ouvir o teu choro e sorrir.",
+      "As estrelinhas lá em cima já sussurram o teu nome.",
+      "A cada dia que passa, o amor cresce mais.",
+      "Tomás, és a promessa mais bonita que fizemos à vida.",
+      "As nossas mãos já se estendem à tua espera.",
+      "O céu parece mais azul desde que sabemos que vens.",
+      "Pequenino Tomás, és gigante no nosso coração.",
+      "O teu lugar já existe, entre os nossos braços.",
+      "O teu primeiro olhar será o nosso eterno momento.",
+      "Foste sonhado muito antes de existires.",
+      "Já sentimos os teus passos no silêncio do coração.",
+      "És a prova viva de que o amor cria milagres.",
+      "Tomás, trazes contigo um mundo novo.",
+      "A contagem decrescente é o prelúdio do amor eterno."
+    ];
+
+    let fraseIndex = 0;
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diffTime = nascimentoTomas - agora;
+      const diffSeconds = Math.floor(diffTime / 1000);
+
+      const contadorEl = document.getElementById('contador');
+
+      if (diffSeconds > 0) {
+        const dias = Math.floor(diffSeconds / (3600 * 24));
+        const horas = Math.floor((diffSeconds % (3600 * 24)) / 3600);
+        const minutos = Math.floor((diffSeconds % 3600) / 60);
+        const segundos = diffSeconds % 60;
+
+        contadorEl.textContent =
+          `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+      } else if (diffSeconds >= -86400) {
+        contadorEl.textContent = 'É HOJE! 💙';
+      } else {
+        contadorEl.textContent = 'Bem-vindo, Tomás!';
+      }
+    }
+
+    function mudarFrase() {
+      const fraseEl = document.getElementById('frase');
+      fraseEl.style.opacity = 0;
+      setTimeout(() => {
+        fraseEl.textContent = frases[fraseIndex];
+        fraseEl.style.opacity = 1;
+        fraseIndex = (fraseIndex + 1) % frases.length;
+      }, 500);
+    }
+
+    atualizarContador();
+    mudarFrase();
+
+    setInterval(atualizarContador, 1000);
+    setInterval(mudarFrase, 10000);
+  </script>
+
+</body>
+</html>
